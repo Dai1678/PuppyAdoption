@@ -4,10 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,22 +44,27 @@ fun PuppyList(list: List<Puppy>) {
 
 @Composable
 fun PuppyItem(puppy: Puppy) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        val img = painterResource(id = puppy.imageResId)
-        Image(
-            painter = img,
-            contentDescription = null,
-            modifier = Modifier.size(56.dp),
-            contentScale = ContentScale.Crop
-        )
+    Column {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            val img = painterResource(id = puppy.imageResId)
+            Image(
+                painter = img,
+                contentDescription = null,
+                modifier = Modifier
+                    .size(56.dp, 56.dp)
+                    .padding(start = 16.dp),
+                contentScale = ContentScale.Crop
+            )
 
-        Spacer(Modifier.width(16.dp))
-        Text(puppy.name)
+            Spacer(Modifier.width(16.dp))
+            Text(puppy.name)
+        }
+        Divider()
     }
 }
 
