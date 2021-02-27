@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                MyApp()
+                MainActivityContent()
             }
         }
     }
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
 // Start building your app here!
 @Composable
-fun MyApp() {
+private fun MainActivityContent() {
     Surface(color = MaterialTheme.colors.background) {
         PuppyListScreen()
     }
@@ -45,16 +45,16 @@ fun MyApp() {
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
-fun LightPreview() {
+private fun LightPreview() {
     MyTheme {
-        MyApp()
+        MainActivityContent()
     }
 }
 
 @Preview("Dark Theme", widthDp = 360, heightDp = 640)
 @Composable
-fun DarkPreview() {
+private fun DarkPreview() {
     MyTheme(darkTheme = true) {
-        MyApp()
+        MainActivityContent()
     }
 }
