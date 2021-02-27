@@ -18,6 +18,7 @@ package dev.dai.puppyadoption
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
@@ -61,7 +62,9 @@ private fun PuppyDetail(puppy: Puppy) {
         Image(
             painter = image,
             contentDescription = null,
-            modifier = Modifier.height(220.dp),
+            modifier = Modifier
+                .height(220.dp)
+                .fillMaxWidth(),
             contentScale = ContentScale.FillWidth
         )
         Spacer(Modifier.height(16.dp))
