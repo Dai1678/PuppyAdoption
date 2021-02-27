@@ -1,6 +1,7 @@
 package dev.dai.puppyadoption
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -18,33 +19,32 @@ import dev.dai.puppyadoption.data.samplePuppyList
 import dev.dai.puppyadoption.ui.theme.MyTheme
 
 @Composable
-fun PuppyListScreen() {
-    val puppyList = samplePuppyList
-    MyTheme {
-        Scaffold(
-            topBar = {
-                TopAppBar(title = {
-                    Text(stringResource(R.string.app_name))
-                })
+fun PuppyListScreen(actionToPuppyDetail: () -> Unit) {
+    Surface(color = MaterialTheme.colors.background) {
+        MyTheme {
+            Scaffold(
+                topBar = {
+                    TopAppBar(title = {
+                        Text(stringResource(R.string.app_name))
+                    })
+                }
+            ) {
+                LazyColumn {
+                    items(samplePuppyList) { puppy ->
+                        PuppyItem(puppy, actionToPuppyDetail)
+                    }
+                }
             }
-        ) {
-            PuppyList(puppyList)
         }
     }
 }
 
 @Composable
-fun PuppyList(list: List<Puppy>) {
-    LazyColumn {
-        items(list) { puppy ->
-            PuppyItem(puppy)
-        }
-    }
-}
-
-@Composable
-fun PuppyItem(puppy: Puppy) {
-    Column {
+private fun PuppyItem(puppy: Puppy, onClick: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .clickable { onClick() }
+    ) {
         Row(
             modifier = Modifier
                 .padding(vertical = 8.dp),
@@ -69,27 +69,34 @@ fun PuppyItem(puppy: Puppy) {
 
 @Preview
 @Composable
-fun PuppyList() {
-    MyTheme {
-        Surface {
-            PuppyList(samplePuppyList)
-        }
-    }
-}
-
-@Preview
-@Composable
-fun PuppyItemPreview() {
+private fun PuppyItemPreview() {
     MyTheme {
         Surface {
             PuppyItem(
-                Puppy(
+                puppy = Puppy(
                     name = "Ariel",
                     imageResId = R.drawable.ariel,
                     age = 10,
                     description = "Cute!"
-                )
+                ),
+                onClick = {}
             )
         }
+    }
+}
+
+@Preview("Light Theme", widthDp = 360, heightDp = 640)
+@Composable
+private fun LightPreview() {
+    MyTheme {
+        PuppyListScreen(actionToPuppyDetail = {})
+    }
+}
+
+@Preview("Dark Theme", widthDp = 360, heightDp = 640)
+@Composable
+private fun DarkPreview() {
+    MyTheme(darkTheme = true) {
+        PuppyListScreen(actionToPuppyDetail = {})
     }
 }
