@@ -1,14 +1,17 @@
 package dev.dai.puppyadoption.data
 
+import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import dev.dai.puppyadoption.R
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Puppy(
     val name: String,
     @DrawableRes val imageResId: Int,
     val age: Int,
     val description: String
-)
+) : Parcelable
 
 val samplePuppyList = listOf(
     Puppy(
