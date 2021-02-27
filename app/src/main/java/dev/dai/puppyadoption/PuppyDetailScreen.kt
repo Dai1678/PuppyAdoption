@@ -17,10 +17,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import dev.dai.puppyadoption.data.Puppy
 import dev.dai.puppyadoption.ui.theme.MyTheme
 
 @Composable
-fun PuppyDetailScreen() {
+fun PuppyDetailScreen(puppy: Puppy) {
     MyTheme {
         Scaffold(
             topBar = {
@@ -29,14 +30,14 @@ fun PuppyDetailScreen() {
                 })
             }
         ) {
-            PuppyDetail()
+            PuppyDetail(puppy)
         }
     }
 }
 
 @Composable
-private fun PuppyDetail() {
-    val image = painterResource(R.drawable.ariel)
+private fun PuppyDetail(puppy: Puppy) {
+    val image = painterResource(puppy.imageResId)
     Column(
         Modifier.padding(16.dp)
     ) {
@@ -49,13 +50,13 @@ private fun PuppyDetail() {
         Spacer(Modifier.height(16.dp))
 
         Text(
-            text = "Ariel",
+            text = puppy.name,
             style = MaterialTheme.typography.h4
         )
         Spacer(Modifier.height(16.dp))
 
         Text(
-            text = "Age: 10",
+            text = "Age: ${puppy.age}",
             style = MaterialTheme.typography.h6
         )
         Spacer(Modifier.height(16.dp))
@@ -66,7 +67,7 @@ private fun PuppyDetail() {
         )
         Spacer(Modifier.height(4.dp))
         Text(
-            text = "Cute!",
+            text = puppy.description,
             style = MaterialTheme.typography.body1
         )
     }
@@ -77,7 +78,14 @@ private fun PuppyDetail() {
 private fun PuppyDetailPreview() {
     MyTheme {
         Surface {
-            PuppyDetail()
+            PuppyDetail(
+                Puppy(
+                    name = "Ariel",
+                    imageResId = R.drawable.ariel,
+                    age = 10,
+                    description = "Cute!"
+                )
+            )
         }
     }
 }
@@ -86,7 +94,14 @@ private fun PuppyDetailPreview() {
 @Composable
 private fun LightPreview() {
     MyTheme {
-        PuppyDetailScreen()
+        PuppyDetailScreen(
+            Puppy(
+                name = "Ariel",
+                imageResId = R.drawable.ariel,
+                age = 10,
+                description = "Cute!"
+            )
+        )
     }
 }
 
@@ -94,6 +109,13 @@ private fun LightPreview() {
 @Composable
 private fun DarkPreview() {
     MyTheme(darkTheme = true) {
-        PuppyDetailScreen()
+        PuppyDetailScreen(
+            Puppy(
+                name = "Ariel",
+                imageResId = R.drawable.ariel,
+                age = 10,
+                description = "Cute!"
+            )
+        )
     }
 }
