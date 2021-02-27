@@ -24,42 +24,42 @@ val samplePuppyList = listOf(
         name = "Blossom",
         imageResId = R.drawable.blossom,
         age = 3,
-        description = "Cute!"
+        description = "Fantastic!"
     ),
     Puppy(
         name = "Candy",
         imageResId = R.drawable.candy,
-        age = 10,
-        description = "Cute!"
+        age = 4,
+        description = "Excellent!"
     ),
     Puppy(
         name = "Daisy",
         imageResId = R.drawable.daisy,
-        age = 10,
-        description = "Cute!"
+        age = 6,
+        description = "Perfect!"
     ),
     Puppy(
         name = "Emmy",
         imageResId = R.drawable.emmy,
-        age = 10,
-        description = "Cute!"
+        age = 8,
+        description = "Brilliant!"
     ),
     Puppy(
         name = "Grace",
         imageResId = R.drawable.grace,
-        age = 10,
-        description = "Cute!"
+        age = 2,
+        description = "Amazing!"
     ),
     Puppy(
         name = "Honey",
         imageResId = R.drawable.honey,
-        age = 10,
-        description = "Cute!"
+        age = 9,
+        description = "Cool!"
     ),
     Puppy(
         name = "Jewel",
         imageResId = R.drawable.jewel,
         age = 10,
-        description = "Cute!"
+        description = "Awesome!"
     )
 )
