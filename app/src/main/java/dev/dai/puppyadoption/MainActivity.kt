@@ -18,10 +18,6 @@ package dev.dai.puppyadoption
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import dev.dai.puppyadoption.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
@@ -32,29 +28,5 @@ class MainActivity : AppCompatActivity() {
                 NavGraph()
             }
         }
-    }
-}
-
-// Start building your app here!
-@Composable
-private fun MainActivityContent() {
-    Surface(color = MaterialTheme.colors.background) {
-        PuppyListScreen(actionToPuppyDetail = {})
-    }
-}
-
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
-@Composable
-private fun LightPreview() {
-    MyTheme {
-        MainActivityContent()
-    }
-}
-
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-private fun DarkPreview() {
-    MyTheme(darkTheme = true) {
-        MainActivityContent()
     }
 }

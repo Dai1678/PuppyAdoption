@@ -20,25 +20,21 @@ import dev.dai.puppyadoption.ui.theme.MyTheme
 
 @Composable
 fun PuppyListScreen(actionToPuppyDetail: () -> Unit) {
-    val puppyList = samplePuppyList
-    MyTheme {
-        Scaffold(
-            topBar = {
-                TopAppBar(title = {
-                    Text(stringResource(R.string.app_name))
-                })
+    Surface(color = MaterialTheme.colors.background) {
+        MyTheme {
+            Scaffold(
+                topBar = {
+                    TopAppBar(title = {
+                        Text(stringResource(R.string.app_name))
+                    })
+                }
+            ) {
+                LazyColumn {
+                    items(samplePuppyList) { puppy ->
+                        PuppyItem(puppy, actionToPuppyDetail)
+                    }
+                }
             }
-        ) {
-            PuppyList(puppyList, actionToPuppyDetail)
-        }
-    }
-}
-
-@Composable
-fun PuppyList(list: List<Puppy>, onClick: () -> Unit) {
-    LazyColumn {
-        items(list) { puppy ->
-            PuppyItem(puppy, onClick)
         }
     }
 }
@@ -73,19 +69,6 @@ fun PuppyItem(puppy: Puppy, onClick: () -> Unit) {
 
 @Preview
 @Composable
-fun PuppyList() {
-    MyTheme {
-        Surface {
-            PuppyList(
-                list = samplePuppyList,
-                onClick = {}
-            )
-        }
-    }
-}
-
-@Preview
-@Composable
 fun PuppyItemPreview() {
     MyTheme {
         Surface {
@@ -99,5 +82,21 @@ fun PuppyItemPreview() {
                 onClick = {}
             )
         }
+    }
+}
+
+@Preview("Light Theme", widthDp = 360, heightDp = 640)
+@Composable
+private fun LightPreview() {
+    MyTheme {
+        PuppyListScreen(actionToPuppyDetail = {})
+    }
+}
+
+@Preview("Dark Theme", widthDp = 360, heightDp = 640)
+@Composable
+private fun DarkPreview() {
+    MyTheme(darkTheme = true) {
+        PuppyListScreen(actionToPuppyDetail = {})
     }
 }
