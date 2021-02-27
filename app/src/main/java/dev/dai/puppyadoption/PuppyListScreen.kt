@@ -1,6 +1,7 @@
 package dev.dai.puppyadoption
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -18,7 +19,7 @@ import dev.dai.puppyadoption.data.samplePuppyList
 import dev.dai.puppyadoption.ui.theme.MyTheme
 
 @Composable
-fun PuppyListScreen() {
+fun PuppyListScreen(actionToPuppyDetail: () -> Unit) {
     val puppyList = samplePuppyList
     MyTheme {
         Scaffold(
@@ -28,23 +29,26 @@ fun PuppyListScreen() {
                 })
             }
         ) {
-            PuppyList(puppyList)
+            PuppyList(puppyList, actionToPuppyDetail)
         }
     }
 }
 
 @Composable
-fun PuppyList(list: List<Puppy>) {
+fun PuppyList(list: List<Puppy>, onClick: () -> Unit) {
     LazyColumn {
         items(list) { puppy ->
-            PuppyItem(puppy)
+            PuppyItem(puppy, onClick)
         }
     }
 }
 
 @Composable
-fun PuppyItem(puppy: Puppy) {
-    Column {
+fun PuppyItem(puppy: Puppy, onClick: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .clickable { onClick() }
+    ) {
         Row(
             modifier = Modifier
                 .padding(vertical = 8.dp),
@@ -72,7 +76,10 @@ fun PuppyItem(puppy: Puppy) {
 fun PuppyList() {
     MyTheme {
         Surface {
-            PuppyList(samplePuppyList)
+            PuppyList(
+                list = samplePuppyList,
+                onClick = {}
+            )
         }
     }
 }
@@ -83,12 +90,13 @@ fun PuppyItemPreview() {
     MyTheme {
         Surface {
             PuppyItem(
-                Puppy(
+                puppy = Puppy(
                     name = "Ariel",
                     imageResId = R.drawable.ariel,
                     age = 10,
                     description = "Cute!"
-                )
+                ),
+                onClick = {}
             )
         }
     }

@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                MainActivityContent()
+                NavGraph()
             }
         }
     }
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 @Composable
 private fun MainActivityContent() {
     Surface(color = MaterialTheme.colors.background) {
-        PuppyListScreen()
+        PuppyListScreen(actionToPuppyDetail = {})
     }
 }
 
