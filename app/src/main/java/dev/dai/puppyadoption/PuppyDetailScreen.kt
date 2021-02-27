@@ -18,6 +18,7 @@ package dev.dai.puppyadoption
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
@@ -61,7 +62,9 @@ private fun PuppyDetail(puppy: Puppy) {
         Image(
             painter = image,
             contentDescription = null,
-            modifier = Modifier.height(220.dp),
+            modifier = Modifier
+                .height(220.dp)
+                .fillMaxWidth(),
             contentScale = ContentScale.FillWidth
         )
         Spacer(Modifier.height(16.dp))
@@ -107,32 +110,15 @@ private fun PuppyDetailPreview() {
     }
 }
 
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
+@Preview("PuppyDetailScreen", widthDp = 360, heightDp = 640)
 @Composable
-private fun LightPreview() {
-    MyTheme {
-        PuppyDetailScreen(
-            Puppy(
-                name = "Ariel",
-                imageResId = R.drawable.ariel,
-                age = 10,
-                description = "Cute!"
-            )
+private fun PuppyDetailScreen() {
+    PuppyDetailScreen(
+        Puppy(
+            name = "Ariel",
+            imageResId = R.drawable.ariel,
+            age = 10,
+            description = "Cute!"
         )
-    }
-}
-
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-private fun DarkPreview() {
-    MyTheme(darkTheme = true) {
-        PuppyDetailScreen(
-            Puppy(
-                name = "Ariel",
-                imageResId = R.drawable.ariel,
-                age = 10,
-                description = "Cute!"
-            )
-        )
-    }
+    )
 }
