@@ -26,7 +26,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -45,21 +44,19 @@ import dev.dai.puppyadoption.ui.theme.MyTheme
 
 @Composable
 fun PuppyListScreen(actionToPuppyDetail: (Puppy) -> Unit) {
-    Surface(color = MaterialTheme.colors.background) {
-        MyTheme {
-            Scaffold(
-                topBar = {
-                    TopAppBar(
-                        title = {
-                            Text(stringResource(R.string.app_name))
-                        }
-                    )
-                }
-            ) {
-                LazyColumn {
-                    items(samplePuppyList) { puppy ->
-                        PuppyItem(puppy) { actionToPuppyDetail(puppy) }
+    MyTheme {
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = {
+                        Text(stringResource(R.string.app_name))
                     }
+                )
+            }
+        ) {
+            LazyColumn {
+                items(samplePuppyList) { puppy ->
+                    PuppyItem(puppy) { actionToPuppyDetail(puppy) }
                 }
             }
         }
@@ -112,18 +109,10 @@ private fun PuppyItemPreview() {
     }
 }
 
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
+@Preview("PuppyListScreen", widthDp = 360, heightDp = 640)
 @Composable
-private fun LightPreview() {
+private fun PuppyListScreenPreview() {
     MyTheme {
-        PuppyListScreen(actionToPuppyDetail = {})
-    }
-}
-
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-private fun DarkPreview() {
-    MyTheme(darkTheme = true) {
         PuppyListScreen(actionToPuppyDetail = {})
     }
 }
