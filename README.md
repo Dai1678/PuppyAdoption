@@ -7,11 +7,15 @@
 
 ## :scroll: Description
 <!--- Describe your app in one or two sentences -->
+This is the [#AndroidDevChallenge](https://android-developers.googleblog.com/2021/02/android-dev-challenge-lift-off-with.html) Week 1 application.
+Do you like puppies?
+Find your favorite puppy!
 
 
 ## :bulb: Motivation and Context
 <!--- Optionally point readers to interesting parts of your submission. -->
 <!--- What are you especially proud of? -->
+- Using basic of Jetpack compose and compose-navigation
 
 
 ## :camera_flash: Screenshots
