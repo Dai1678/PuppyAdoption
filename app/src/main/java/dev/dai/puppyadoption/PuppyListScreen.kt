@@ -40,7 +40,7 @@ fun PuppyListScreen(actionToPuppyDetail: () -> Unit) {
 }
 
 @Composable
-fun PuppyItem(puppy: Puppy, onClick: () -> Unit) {
+private fun PuppyItem(puppy: Puppy, onClick: () -> Unit) {
     Column(
         modifier = Modifier
             .clickable { onClick() }
@@ -69,7 +69,7 @@ fun PuppyItem(puppy: Puppy, onClick: () -> Unit) {
 
 @Preview
 @Composable
-fun PuppyItemPreview() {
+private fun PuppyItemPreview() {
     MyTheme {
         Surface {
             PuppyItem(
