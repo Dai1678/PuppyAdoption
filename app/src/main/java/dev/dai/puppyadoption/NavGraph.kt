@@ -7,10 +7,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import dev.dai.puppyadoption.MainDestination.KEY_PUPPY
+import dev.dai.puppyadoption.data.Puppy
 
 object MainDestination {
     const val PUPPY_LIST_ROUTE = "puppy_list"
     const val PUPPY_DETAIL_ROUTE = "puppy_detail"
+    const val KEY_PUPPY = "puppy"
 }
 
 @Composable
@@ -23,13 +26,17 @@ fun NavGraph(startDestination: String = MainDestination.PUPPY_LIST_ROUTE) {
             PuppyListScreen(actions.actionToPuppyDetail)
         }
         composable(MainDestination.PUPPY_DETAIL_ROUTE) {
-            PuppyDetailScreen()
+            val puppy =
+                navController.previousBackStackEntry?.arguments?.getParcelable<Puppy>(KEY_PUPPY)
+                    ?: throw IllegalArgumentException()
+            PuppyDetailScreen(puppy)
         }
     }
 }
 
 class MainActions(navController: NavController) {
-    val actionToPuppyDetail: () -> Unit = {
+    val actionToPuppyDetail: (Puppy) -> Unit = { puppy ->
+        navController.currentBackStackEntry?.arguments?.putParcelable(KEY_PUPPY, puppy)
         navController.navigate(MainDestination.PUPPY_DETAIL_ROUTE)
     }
 }

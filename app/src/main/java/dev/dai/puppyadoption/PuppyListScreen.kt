@@ -29,7 +29,7 @@ import dev.dai.puppyadoption.data.samplePuppyList
 import dev.dai.puppyadoption.ui.theme.MyTheme
 
 @Composable
-fun PuppyListScreen(actionToPuppyDetail: () -> Unit) {
+fun PuppyListScreen(actionToPuppyDetail: (Puppy) -> Unit) {
     Surface(color = MaterialTheme.colors.background) {
         MyTheme {
             Scaffold(
@@ -41,7 +41,7 @@ fun PuppyListScreen(actionToPuppyDetail: () -> Unit) {
             ) {
                 LazyColumn {
                     items(samplePuppyList) { puppy ->
-                        PuppyItem(puppy, actionToPuppyDetail)
+                        PuppyItem(puppy) { actionToPuppyDetail(puppy) }
                     }
                 }
             }
