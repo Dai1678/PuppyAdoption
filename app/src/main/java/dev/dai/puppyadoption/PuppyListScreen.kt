@@ -47,7 +47,6 @@ fun PuppyItem(puppy: Puppy) {
     Column {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -56,8 +55,8 @@ fun PuppyItem(puppy: Puppy) {
                 painter = img,
                 contentDescription = null,
                 modifier = Modifier
-                    .size(56.dp, 56.dp)
-                    .padding(start = 16.dp),
+                    .padding(start = 16.dp)
+                    .size(56.dp, 56.dp),
                 contentScale = ContentScale.Crop
             )
 
