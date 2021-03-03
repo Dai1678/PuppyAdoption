@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dev.dai.androiddevchallenge
+package dev.dai.puppyadoption
 
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import dev.dai.puppyadoption.MainActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
