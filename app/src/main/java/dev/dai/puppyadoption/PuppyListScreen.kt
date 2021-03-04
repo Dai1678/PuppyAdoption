@@ -17,9 +17,9 @@ package dev.dai.puppyadoption
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -57,6 +57,7 @@ fun PuppyListScreen(actionToPuppyDetail: (Puppy) -> Unit) {
             LazyColumn {
                 items(samplePuppyList) { puppy ->
                     PuppyItem(puppy) { actionToPuppyDetail(puppy) }
+                    Divider()
                 }
             }
         }
@@ -64,30 +65,26 @@ fun PuppyListScreen(actionToPuppyDetail: (Puppy) -> Unit) {
 }
 
 @Composable
-private fun PuppyItem(puppy: Puppy, onClick: () -> Unit) {
-    Column(
+private fun PuppyItem(puppy: Puppy, onClickRow: () -> Unit) {
+    Row(
         modifier = Modifier
-            .clickable { onClick() }
+            .clickable { onClickRow() }
+            .padding(vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(
+        Image(
+            painter = painterResource(puppy.imageResId),
+            contentDescription = null,
             modifier = Modifier
-                .padding(vertical = 8.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            val img = painterResource(id = puppy.imageResId)
-            Image(
-                painter = img,
-                contentDescription = null,
-                modifier = Modifier
-                    .padding(start = 16.dp)
-                    .size(56.dp, 56.dp),
-                contentScale = ContentScale.Crop
-            )
-
-            Spacer(Modifier.width(16.dp))
-            Text(puppy.name)
-        }
-        Divider()
+                .padding(start = 16.dp)
+                .size(56.dp),
+            contentScale = ContentScale.Crop
+        )
+        Spacer(Modifier.width(16.dp))
+        Text(
+            text = puppy.name,
+            modifier = Modifier.fillMaxWidth()
+        )
     }
 }
 
@@ -103,7 +100,7 @@ private fun PuppyItemPreview() {
                     age = 10,
                     description = "Cute!"
                 ),
-                onClick = {}
+                onClickRow = {}
             )
         }
     }
