@@ -95,6 +95,7 @@ private fun PuppyItemPreview() {
         Surface {
             PuppyItem(
                 puppy = Puppy(
+                    id = 0,
                     name = "Ariel",
                     imageResId = R.drawable.ariel,
                     age = 10,

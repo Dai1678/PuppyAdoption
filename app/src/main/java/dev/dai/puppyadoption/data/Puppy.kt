@@ -15,63 +15,69 @@
  */
 package dev.dai.puppyadoption.data
 
-import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import dev.dai.puppyadoption.R
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
 data class Puppy(
+    val id: Int,
     val name: String,
     @DrawableRes val imageResId: Int,
     val age: Int,
-    val description: String
-) : Parcelable
+    val description: String,
+)
 
 val samplePuppyList = listOf(
     Puppy(
+        id = 0,
         name = "Ariel",
         imageResId = R.drawable.ariel,
         age = 10,
         description = "Cute!"
     ),
     Puppy(
+        id = 1,
         name = "Blossom",
         imageResId = R.drawable.blossom,
         age = 3,
         description = "Fantastic!"
     ),
     Puppy(
+        id = 2,
         name = "Candy",
         imageResId = R.drawable.candy,
         age = 4,
         description = "Excellent!"
     ),
     Puppy(
+        id = 3,
         name = "Daisy",
         imageResId = R.drawable.daisy,
         age = 6,
         description = "Perfect!"
     ),
     Puppy(
+        id = 4,
         name = "Emmy",
         imageResId = R.drawable.emmy,
         age = 8,
         description = "Brilliant!"
     ),
     Puppy(
+        id = 5,
         name = "Grace",
         imageResId = R.drawable.grace,
         age = 2,
         description = "Amazing!"
     ),
     Puppy(
+        id = 6,
         name = "Honey",
         imageResId = R.drawable.honey,
         age = 9,
         description = "Cool!"
     ),
     Puppy(
+        id = 7,
         name = "Jewel",
         imageResId = R.drawable.jewel,
         age = 10,

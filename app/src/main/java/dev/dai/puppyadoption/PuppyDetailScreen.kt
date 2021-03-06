@@ -34,10 +34,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.dai.puppyadoption.data.Puppy
+import dev.dai.puppyadoption.data.samplePuppyList
 import dev.dai.puppyadoption.ui.theme.MyTheme
 
 @Composable
-fun PuppyDetailScreen(puppy: Puppy) {
+fun PuppyDetailScreen(puppyId: Int) {
+    val puppy = samplePuppyList.first { it.id == puppyId }
     MyTheme {
         Scaffold(
             topBar = {
@@ -100,6 +102,7 @@ private fun PuppyDetailPreview() {
         Surface {
             PuppyDetail(
                 Puppy(
+                    id = 0,
                     name = "Ariel",
                     imageResId = R.drawable.ariel,
                     age = 10,
@@ -113,12 +116,5 @@ private fun PuppyDetailPreview() {
 @Preview("PuppyDetailScreen", widthDp = 360, heightDp = 640)
 @Composable
 private fun PuppyDetailScreen() {
-    PuppyDetailScreen(
-        Puppy(
-            name = "Ariel",
-            imageResId = R.drawable.ariel,
-            age = 10,
-            description = "Cute!"
-        )
-    )
+    PuppyDetailScreen(puppyId = 0)
 }
